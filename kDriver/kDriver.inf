@@ -1,0 +1,77 @@
+;
+; kDriver.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=kDriver.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+kDriver_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+kDriver.sys  = 1,,
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll=1 ; make sure the number matches with SourceDisksNames
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%kDriver.DeviceDesc%=kDriver_Device, Root\kDriver ; TODO: edit hw-id
+
+[kDriver_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+kDriver.sys
+
+;-------------- Service installation
+[kDriver_Device.NT.Services]
+AddService = kDriver,%SPSVCINST_ASSOCSERVICE%, kDriver_Service_Inst
+
+; -------------- kDriver driver install sections
+[kDriver_Service_Inst]
+DisplayName    = %kDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\kDriver.sys
+
+;
+;--- kDriver_Device Coinstaller installation ------
+;
+
+[kDriver_Device.NT.CoInstallers]
+AddReg=kDriver_Device_CoInstaller_AddReg
+CopyFiles=kDriver_Device_CoInstaller_CopyFiles
+
+[kDriver_Device_CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll,WdfCoInstaller"
+
+[kDriver_Device_CoInstaller_CopyFiles]
+WdfCoInstaller$KMDFCOINSTALLERVERSION$.dll
+
+[kDriver_Device.NT.Wdf]
+KmdfService =  kDriver, kDriver_wdfsect
+[kDriver_wdfsect]
+KmdfLibraryVersion = $KMDFVERSION$
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "kDriver Installation Disk"
+kDriver.DeviceDesc = "kDriver Device"
+kDriver.SVCDESC = "kDriver Service"
