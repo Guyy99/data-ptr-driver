@@ -27,45 +27,39 @@
     </Inf>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="km\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="memory.cpp">
+    <ClCompile Include="km\memory\memory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hook.cpp">
+    <ClCompile Include="km\hook\hook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="bypass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="phys.cpp">
+    <ClCompile Include="km\memory\phys.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="includes.h">
+    <ClInclude Include="km\includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="memory.h">
+    <ClInclude Include="km\memory\memory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="defs.h">
+    <ClInclude Include="km\memory\defs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hook.h">
+    <ClInclude Include="km\hook\hook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="bypass.h">
+    <ClInclude Include="km\memory\phys.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="phys.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="um_communication.h">
+    <ClInclude Include="um\um_communication.h">
       <Filter>usermode</Filter>
     </ClInclude>
-    <ClInclude Include="syscall.h">
+    <ClInclude Include="um\syscall.h">
       <Filter>usermode</Filter>
     </ClInclude>
   </ItemGroup>

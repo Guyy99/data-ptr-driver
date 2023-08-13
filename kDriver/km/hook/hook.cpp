@@ -1,7 +1,5 @@
 #include "hook.h"
-#include "includes.h"
-#include "memory.h"
-#include "defs.h"
+#include "../memory/memory.h"
 
 typedef unsigned __int64 _QWORD;
 

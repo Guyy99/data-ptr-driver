@@ -122,21 +122,19 @@
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="bypass.cpp" />
-    <ClCompile Include="hook.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="memory.cpp" />
-    <ClCompile Include="phys.cpp" />
+    <ClCompile Include="km\hook\hook.cpp" />
+    <ClCompile Include="km\main.cpp" />
+    <ClCompile Include="km\memory\memory.cpp" />
+    <ClCompile Include="km\memory\phys.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="bypass.h" />
-    <ClInclude Include="defs.h" />
-    <ClInclude Include="hook.h" />
-    <ClInclude Include="includes.h" />
-    <ClInclude Include="memory.h" />
-    <ClInclude Include="phys.h" />
-    <ClInclude Include="syscall.h" />
-    <ClInclude Include="um_communication.h" />
+    <ClInclude Include="km\memory\defs.h" />
+    <ClInclude Include="km\hook\hook.h" />
+    <ClInclude Include="km\includes.h" />
+    <ClInclude Include="km\memory\memory.h" />
+    <ClInclude Include="km\memory\phys.h" />
+    <ClInclude Include="um\syscall.h" />
+    <ClInclude Include="um\um_communication.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
