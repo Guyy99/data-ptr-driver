@@ -97,8 +97,9 @@
       <SpecifyArchitecture>true</SpecifyArchitecture>
     </Inf>
     <ClCompile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <EntryPointSymbol>DriverEntry</EntryPointSymbol>
@@ -121,15 +122,21 @@
     <FilesToPackage Include="$(TargetPath)" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bypass.cpp" />
     <ClCompile Include="hook.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory.cpp" />
+    <ClCompile Include="phys.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bypass.h" />
     <ClInclude Include="defs.h" />
     <ClInclude Include="hook.h" />
     <ClInclude Include="includes.h" />
     <ClInclude Include="memory.h" />
+    <ClInclude Include="phys.h" />
+    <ClInclude Include="syscall.h" />
+    <ClInclude Include="um_communication.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

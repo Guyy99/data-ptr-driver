@@ -2,26 +2,29 @@
 
 #include <cstdint>
 
+
+
 #define win32kbaseSize 0x294600
 
-struct READ_WRITE
+enum requests
 {
-	uintptr_t key;
-	bool request_PID;
-	bool request_module_base;
-	bool request_read;
-	bool request_write;
-	bool request_PEB;
+	REQUEST_PEB,
+	REQUEST_PID,
+	REQUEST_MODULEBASE,
+	REQUEST_READ,
+	REQUEST_WRITE
+};
+
+struct KM_REQ
+{
+	uintptr_t key = 0x69420;
+	uintptr_t request;
+	uintptr_t address;
+	uintptr_t PID;
 	const char* processName;
 	const char* moduleName;
-	uintptr_t PID;
-	uintptr_t address;
-	uintptr_t PEB;
 	void* pBuffer;
-	uintptr_t moduleBase;
-	size_t size_of_buffer;
-	bool operation_success;
-
+	uintptr_t size_of_buffer;
 };
 
 namespace hook
